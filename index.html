@@ -128,6 +128,13 @@
   .card li { margin-bottom: 6px; }
   .card strong { color: var(--gray-text); }
 
+  /* Section hero image */
+  .section-image {
+    display: block;
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+
   /* Warning callout */
   .warning {
     background: var(--yellow-light);
@@ -289,8 +296,52 @@
 <!-- Main Content -->
 <div class="container" id="content">
 
+  <!-- Lights Section -->
+  <div class="section active" id="sec-lights">
+    <h2 class="section-title">
+      <span class="lang-cs">Svetla</span>
+      <span class="lang-en">Lights</span>
+    </h2>
+
+    <img src="lights-on.png" alt="Hold the down arrow button for 3 seconds to toggle lights" class="section-image">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">👆</span>
+        <h3>
+          <span class="lang-cs">Drz 3 sekundy</span>
+          <span class="lang-en">Press and hold 3 seconds</span>
+        </h3>
+      </div>
+      <p>
+        <span class="lang-cs">Stiskni a <strong>drz tlacitko &laquo;&minus;&raquo;</strong> (sipka dolu na displeji) po dobu 3 sekund.</span>
+        <span class="lang-en">Press and <strong>hold the &laquo;&minus;&raquo; button</strong> (the down arrow on the screen) for 3 seconds.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">💡</span>
+        <h3>
+          <span class="lang-cs">Zkontroluj displej</span>
+          <span class="lang-en">Check the screen</span>
+        </h3>
+      </div>
+      <p>
+        <span class="lang-cs">Na displeji se zobrazi <strong>"LIGHTS ON"</strong> nebo <strong>"LIGHTS OFF"</strong>.</span>
+        <span class="lang-en">The screen will show <strong>"LIGHTS ON"</strong> or <strong>"LIGHTS OFF"</strong>.</span>
+      </p>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Za deste, v mlze nebo v noci vzdy rozsvit svetla a zpomal.</span>
+        <span class="lang-en">Remember: In rain, fog, or at night always turn the lights on and slow down.</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Battery Section -->
-  <div class="section active" id="sec-battery">
+  <div class="section" id="sec-battery">
     <h2 class="section-title">
       <span class="lang-cs">Baterie</span>
       <span class="lang-en">Battery</span>
@@ -368,63 +419,6 @@
         <li class="lang-en">Turn the key — the battery will move slightly so you can grip it.</li>
         <li class="lang-en">Pull the pull tab if it does not move on its own.</li>
       </ol>
-    </div>
-  </div>
-
-  <!-- Lights Section -->
-  <div class="section" id="sec-lights">
-    <h2 class="section-title">
-      <span class="lang-cs">Svetla</span>
-      <span class="lang-en">Lights</span>
-    </h2>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="step-number">1</div>
-        <span class="emoji">🔦</span>
-        <h3>
-          <span class="lang-cs">Najdi tlacitko</span>
-          <span class="lang-en">Find the button</span>
-        </h3>
-      </div>
-      <p>
-        <span class="lang-cs">Najdi <strong>tlacitko &laquo;&minus;&raquo;</strong> na displeji (sipka dolu).</span>
-        <span class="lang-en">Find the <strong>Display &laquo;&minus;&raquo; button</strong> (the down arrow on the screen unit).</span>
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="step-number">2</div>
-        <span class="emoji">👆</span>
-        <h3>
-          <span class="lang-cs">Drz 3 sekundy</span>
-          <span class="lang-en">Press and hold 3 seconds</span>
-        </h3>
-      </div>
-      <p>
-        <span class="lang-cs">Stiskni a <strong>drz ho 3 sekundy</strong>.</span>
-        <span class="lang-en">Press and <strong>hold it for 3 seconds</strong>.</span>
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="step-number">3</div>
-        <span class="emoji">💡</span>
-        <h3>
-          <span class="lang-cs">Zkontroluj displej</span>
-          <span class="lang-en">Check the screen</span>
-        </h3>
-      </div>
-      <p>
-        <span class="lang-cs">Na displeji se zobrazi <strong>"LIGHTS ON"</strong> nebo <strong>"LIGHTS OFF"</strong>.</span>
-        <span class="lang-en">The screen will show <strong>"LIGHTS ON"</strong> or <strong>"LIGHTS OFF"</strong>.</span>
-      </p>
-      <div class="warning">
-        <span class="lang-cs">Pozor: Za deste, v mlze nebo v noci vzdy rozsvit svetla a zpomal.</span>
-        <span class="lang-en">Remember: In rain, fog, or at night always turn the lights on and slow down.</span>
-      </div>
     </div>
   </div>
 
@@ -508,6 +502,8 @@
       <span class="lang-cs">Rezim chuze</span>
       <span class="lang-en">Walk Mode</span>
     </h2>
+
+    <img src="walk-mode.png" alt="Hold the up arrow button for 3 seconds to activate walk mode" class="section-image">
 
     <div class="card">
       <div class="card-header">
@@ -842,15 +838,15 @@
 
 <!-- Bottom Navigation -->
 <nav class="bottom-nav" id="bottomNav">
-  <button class="nav-btn active" data-section="sec-battery">
-    <span class="nav-icon">&#x1F50B;</span>
-    <span class="lang-cs">Baterie</span>
-    <span class="lang-en">Battery</span>
-  </button>
-  <button class="nav-btn" data-section="sec-lights">
+  <button class="nav-btn active" data-section="sec-lights">
     <span class="nav-icon">&#x1F4A1;</span>
     <span class="lang-cs">Svetla</span>
     <span class="lang-en">Lights</span>
+  </button>
+  <button class="nav-btn" data-section="sec-battery">
+    <span class="nav-icon">&#x1F50B;</span>
+    <span class="lang-cs">Baterie</span>
+    <span class="lang-en">Battery</span>
   </button>
   <button class="nav-btn" data-section="sec-assistance">
     <span class="nav-icon">&#x26A1;</span>
