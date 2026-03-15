@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grandma's E-Bike Guide — Rockrider E-ACTV 500</title>
+<title>Navod pro babicku — Rockrider E-ACTV 500</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -39,8 +39,30 @@
     padding: 0 16px;
   }
 
+  /* Language toggle */
+  body.lang-cs .lang-en { display: none !important; }
+  body.lang-en .lang-cs { display: none !important; }
+
+  .lang-switch {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  .lang-switch:hover { background: rgba(255,255,255,0.3); }
+
   /* Hero */
   .hero {
+    position: relative;
     text-align: center;
     padding: 32px 16px 24px;
     background: linear-gradient(135deg, var(--teal), var(--teal-dark));
@@ -248,13 +270,20 @@
   .modes-list li:last-child { border-bottom: none; }
 </style>
 </head>
-<body>
+<body class="lang-cs">
 
 <!-- Hero -->
 <div class="hero">
-  <h1>Grandma's E-Bike Guide</h1>
+  <button class="lang-switch" id="langSwitch">EN</button>
+  <h1>
+    <span class="lang-cs">Navod pro babicku</span>
+    <span class="lang-en">Grandma's E-Bike Guide</span>
+  </h1>
   <div class="bike-name">Rockrider E-ACTV 500</div>
-  <div class="greeting">Hello! Tap a topic below to get started.</div>
+  <div class="greeting">
+    <span class="lang-cs">Ahoj! Klepni na tema dole a zacni.</span>
+    <span class="lang-en">Hello! Tap a topic below to get started.</span>
+  </div>
 </div>
 
 <!-- Main Content -->
@@ -262,18 +291,27 @@
 
   <!-- Battery Section -->
   <div class="section active" id="sec-battery">
-    <h2 class="section-title">Battery</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Baterie</span>
+      <span class="lang-en">Battery</span>
+    </h2>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">1</div>
         <span class="emoji">🔛</span>
-        <h3>Turn the bike ON</h3>
+        <h3>
+          <span class="lang-cs">Zapnuti kola</span>
+          <span class="lang-en">Turn the bike ON</span>
+        </h3>
       </div>
       <ol>
-        <li>Make sure the battery is inserted (it clicks in).</li>
-        <li>Press and hold the <strong>ON/OFF button</strong> on the screen until it lights up.</li>
-        <li>The screen will show your speed, battery level, and assistance mode — you're ready!</li>
+        <li class="lang-cs">Ujisti se, ze baterie je vlozena (zaklapne).</li>
+        <li class="lang-cs">Stiskni a drz <strong>tlacitko ON/OFF</strong> na displeji, dokud se nerozsviti.</li>
+        <li class="lang-cs">Na displeji se zobrazi rychlost, stav baterie a rezim asistence — jsi pripravena!</li>
+        <li class="lang-en">Make sure the battery is inserted (it clicks in).</li>
+        <li class="lang-en">Press and hold the <strong>ON/OFF button</strong> on the screen until it lights up.</li>
+        <li class="lang-en">The screen will show your speed, battery level, and assistance mode — you're ready!</li>
       </ol>
     </div>
 
@@ -281,24 +319,37 @@
       <div class="card-header">
         <div class="step-number">2</div>
         <span class="emoji">📴</span>
-        <h3>Turn the bike OFF</h3>
+        <h3>
+          <span class="lang-cs">Vypnuti kola</span>
+          <span class="lang-en">Turn the bike OFF</span>
+        </h3>
       </div>
       <ol>
-        <li>Press and hold the <strong>ON/OFF button</strong> until the screen goes dark.</li>
+        <li class="lang-cs">Stiskni a drz <strong>tlacitko ON/OFF</strong>, dokud displej nezhasne.</li>
+        <li class="lang-en">Press and hold the <strong>ON/OFF button</strong> until the screen goes dark.</li>
       </ol>
-      <div class="warning">Remember: Always remove the key from the battery lock before riding.</div>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Pred jizdou vzdy vytahni klicek ze zamku baterie.</span>
+        <span class="lang-en">Remember: Always remove the key from the battery lock before riding.</span>
+      </div>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">3</div>
         <span class="emoji">🔋</span>
-        <h3>Insert the battery</h3>
+        <h3>
+          <span class="lang-cs">Vlozeni baterie</span>
+          <span class="lang-en">Insert the battery</span>
+        </h3>
       </div>
       <ol>
-        <li>Check nothing is already in the battery slot.</li>
-        <li>Slide the battery into its housing until it clicks.</li>
-        <li>Always remove the key from the lock before you ride.</li>
+        <li class="lang-cs">Zkontroluj, ze ve slotu neni nic jineho.</li>
+        <li class="lang-cs">Zasun baterii do drzaku, dokud nezaklapne.</li>
+        <li class="lang-cs">Pred jizdou vzdy vytahni klicek ze zamku.</li>
+        <li class="lang-en">Check nothing is already in the battery slot.</li>
+        <li class="lang-en">Slide the battery into its housing until it clicks.</li>
+        <li class="lang-en">Always remove the key from the lock before you ride.</li>
       </ol>
     </div>
 
@@ -306,77 +357,126 @@
       <div class="card-header">
         <div class="step-number">4</div>
         <span class="emoji">🔓</span>
-        <h3>Remove the battery</h3>
+        <h3>
+          <span class="lang-cs">Vyjmuti baterie</span>
+          <span class="lang-en">Remove the battery</span>
+        </h3>
       </div>
       <ol>
-        <li>Turn the key — the battery will move slightly so you can grip it.</li>
-        <li>Pull the pull tab if it does not move on its own.</li>
+        <li class="lang-cs">Otoc klickem — baterie se mirne vysune, abys ji mohla chytit.</li>
+        <li class="lang-cs">Pokud se sama nevysune, zatahni za vytahovaci ousko.</li>
+        <li class="lang-en">Turn the key — the battery will move slightly so you can grip it.</li>
+        <li class="lang-en">Pull the pull tab if it does not move on its own.</li>
       </ol>
     </div>
   </div>
 
   <!-- Lights Section -->
   <div class="section" id="sec-lights">
-    <h2 class="section-title">Lights</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Svetla</span>
+      <span class="lang-en">Lights</span>
+    </h2>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">1</div>
         <span class="emoji">🔦</span>
-        <h3>Find the button</h3>
+        <h3>
+          <span class="lang-cs">Najdi tlacitko</span>
+          <span class="lang-en">Find the button</span>
+        </h3>
       </div>
-      <p>Find the <strong>Display &laquo;&minus;&raquo; button</strong> (the down arrow on the screen unit).</p>
+      <p>
+        <span class="lang-cs">Najdi <strong>tlacitko &laquo;&minus;&raquo;</strong> na displeji (sipka dolu).</span>
+        <span class="lang-en">Find the <strong>Display &laquo;&minus;&raquo; button</strong> (the down arrow on the screen unit).</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">2</div>
         <span class="emoji">👆</span>
-        <h3>Press and hold 3 seconds</h3>
+        <h3>
+          <span class="lang-cs">Drz 3 sekundy</span>
+          <span class="lang-en">Press and hold 3 seconds</span>
+        </h3>
       </div>
-      <p>Press and <strong>hold it for 3 seconds</strong>.</p>
+      <p>
+        <span class="lang-cs">Stiskni a <strong>drz ho 3 sekundy</strong>.</span>
+        <span class="lang-en">Press and <strong>hold it for 3 seconds</strong>.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">3</div>
         <span class="emoji">💡</span>
-        <h3>Check the screen</h3>
+        <h3>
+          <span class="lang-cs">Zkontroluj displej</span>
+          <span class="lang-en">Check the screen</span>
+        </h3>
       </div>
-      <p>The screen will show <strong>"LIGHTS ON"</strong> or <strong>"LIGHTS OFF"</strong>.</p>
-      <div class="warning">Remember: In rain, fog, or at night always turn the lights on and slow down.</div>
+      <p>
+        <span class="lang-cs">Na displeji se zobrazi <strong>"LIGHTS ON"</strong> nebo <strong>"LIGHTS OFF"</strong>.</span>
+        <span class="lang-en">The screen will show <strong>"LIGHTS ON"</strong> or <strong>"LIGHTS OFF"</strong>.</span>
+      </p>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Za deste, v mlze nebo v noci vzdy rozsvit svetla a zpomal.</span>
+        <span class="lang-en">Remember: In rain, fog, or at night always turn the lights on and slow down.</span>
+      </div>
     </div>
   </div>
 
   <!-- Assistance Section -->
   <div class="section" id="sec-assistance">
-    <h2 class="section-title">Assistance</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Asistence</span>
+      <span class="lang-en">Assistance</span>
+    </h2>
 
     <div class="card">
       <div class="card-header">
         <span class="emoji">⚡</span>
-        <h3>What is assistance?</h3>
+        <h3>
+          <span class="lang-cs">Co je asistence?</span>
+          <span class="lang-en">What is assistance?</span>
+        </h3>
       </div>
-      <p>The bike has a motor that helps you pedal. You can choose how much help you want:</p>
-      <ul class="modes-list">
+      <p class="lang-cs">Kolo ma motor, ktery ti pomaha pri slapani. Muzes si vybrat, jak moc ti ma pomahat:</p>
+      <p class="lang-en">The bike has a motor that helps you pedal. You can choose how much help you want:</p>
+      <ul class="modes-list lang-cs">
+        <li><strong>Rezim 0</strong> — Bez pomoci motoru (jen vlastni sila)</li>
+        <li><strong>Rezim 1</strong> — Mala pomoc (+70 %) — vhodne na rovinu (zacinat zde)</li>
+        <li><strong>Rezim 2</strong> — Vetsi pomoc (+150 %) — vhodne na mirne kopce</li>
+        <li><strong>Rezim 3</strong> — Velka pomoc (+220 %) — vhodne na strmejsi kopce</li>
+        <li><strong>Rezim 4</strong> — Maximalni pomoc (+280 %) — kdyz jsi unavena nebo do velkeho kopce</li>
+      </ul>
+      <ul class="modes-list lang-en">
         <li><strong>Mode 0</strong> — No motor help (just your own legs)</li>
         <li><strong>Mode 1</strong> — A little help (+70%) — good for flat roads (starts here)</li>
         <li><strong>Mode 2</strong> — More help (+150%) — good for gentle hills</li>
         <li><strong>Mode 3</strong> — A lot of help (+220%) — good for steeper hills</li>
         <li><strong>Mode 4</strong> — Maximum help (+280%) — use when tired or on big hills</li>
       </ul>
-      <p style="margin-top:12px"><strong>Tip:</strong> The motor only helps when you are pedalling. It stops automatically above 25 km/h.</p>
+      <p class="lang-cs" style="margin-top:12px"><strong>Tip:</strong> Motor pomaha jen kdyz slapete. Automaticky se vypne nad 25 km/h.</p>
+      <p class="lang-en" style="margin-top:12px"><strong>Tip:</strong> The motor only helps when you are pedalling. It stops automatically above 25 km/h.</p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">1</div>
         <span class="emoji">🔼</span>
-        <h3>Increase assistance</h3>
+        <h3>
+          <span class="lang-cs">Zvyseni asistence</span>
+          <span class="lang-en">Increase assistance</span>
+        </h3>
       </div>
       <ol>
-        <li>Press the <strong>&laquo;+&raquo; button</strong> on the handlebar remote (the up arrow).</li>
-        <li>Each press moves up one mode (1 &rarr; 2 &rarr; 3 &rarr; 4).</li>
+        <li class="lang-cs">Stiskni <strong>tlacitko &laquo;+&raquo;</strong> na ovladaci na riditku (sipka nahoru).</li>
+        <li class="lang-cs">Kazde stisknuti zvysi rezim o jeden (1 &rarr; 2 &rarr; 3 &rarr; 4).</li>
+        <li class="lang-en">Press the <strong>&laquo;+&raquo; button</strong> on the handlebar remote (the up arrow).</li>
+        <li class="lang-en">Each press moves up one mode (1 &rarr; 2 &rarr; 3 &rarr; 4).</li>
       </ol>
     </div>
 
@@ -384,79 +484,129 @@
       <div class="card-header">
         <div class="step-number">2</div>
         <span class="emoji">🔽</span>
-        <h3>Decrease assistance</h3>
+        <h3>
+          <span class="lang-cs">Snizeni asistence</span>
+          <span class="lang-en">Decrease assistance</span>
+        </h3>
       </div>
       <ol>
-        <li>Press the <strong>&laquo;&minus;&raquo; button</strong> on the handlebar remote (the down arrow).</li>
-        <li>Each press moves down one mode (4 &rarr; 3 &rarr; 2 &rarr; 1 &rarr; 0).</li>
+        <li class="lang-cs">Stiskni <strong>tlacitko &laquo;&minus;&raquo;</strong> na ovladaci na riditku (sipka dolu).</li>
+        <li class="lang-cs">Kazde stisknuti snizi rezim o jeden (4 &rarr; 3 &rarr; 2 &rarr; 1 &rarr; 0).</li>
+        <li class="lang-en">Press the <strong>&laquo;&minus;&raquo; button</strong> on the handlebar remote (the down arrow).</li>
+        <li class="lang-en">Each press moves down one mode (4 &rarr; 3 &rarr; 2 &rarr; 1 &rarr; 0).</li>
       </ol>
-      <div class="warning">Remember: When the battery is getting low, switch to a <strong>lower mode</strong> (1 or 2) to save energy.</div>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Kdyz je baterie skoro vybita, prepni na <strong>nizsi rezim</strong> (1 nebo 2), abys setrila energii.</span>
+        <span class="lang-en">Remember: When the battery is getting low, switch to a <strong>lower mode</strong> (1 or 2) to save energy.</span>
+      </div>
     </div>
   </div>
 
   <!-- Walk Mode Section -->
   <div class="section" id="sec-walk">
-    <h2 class="section-title">Walk Mode</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Rezim chuze</span>
+      <span class="lang-en">Walk Mode</span>
+    </h2>
 
     <div class="card">
       <div class="card-header">
         <span class="emoji">🚶</span>
-        <h3>What is Walk Mode?</h3>
+        <h3>
+          <span class="lang-cs">Co je rezim chuze?</span>
+          <span class="lang-en">What is Walk Mode?</span>
+        </h3>
       </div>
-      <p>Walk Mode makes the motor gently push the bike forward while you walk beside it — perfect for pushing it up a ramp or steep path without tiring yourself.</p>
+      <p class="lang-cs">Rezim chuze zpusobi, ze motor jemne tlaci kolo dopredu, zatimco jdes vedle nej — idealni pro tlaceni kola do kopce nebo po rampe bez namahani.</p>
+      <p class="lang-en">Walk Mode makes the motor gently push the bike forward while you walk beside it — perfect for pushing it up a ramp or steep path without tiring yourself.</p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">1</div>
         <span class="emoji">🔛</span>
-        <h3>Make sure the bike is ON</h3>
+        <h3>
+          <span class="lang-cs">Kolo musi byt zapnute</span>
+          <span class="lang-en">Make sure the bike is ON</span>
+        </h3>
       </div>
-      <p>The screen should be lit up and showing information.</p>
+      <p>
+        <span class="lang-cs">Displej musi svitit a zobrazovat informace.</span>
+        <span class="lang-en">The screen should be lit up and showing information.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">2</div>
         <span class="emoji">👆</span>
-        <h3>Hold the + button</h3>
+        <h3>
+          <span class="lang-cs">Drz tlacitko +</span>
+          <span class="lang-en">Hold the + button</span>
+        </h3>
       </div>
-      <p>Press and <strong>hold the &laquo;+&raquo; button</strong> on the handlebar remote for 3 seconds.</p>
+      <p>
+        <span class="lang-cs">Stiskni a <strong>drz tlacitko &laquo;+&raquo;</strong> na ovladaci na riditku po dobu 3 sekund.</span>
+        <span class="lang-en">Press and <strong>hold the &laquo;+&raquo; button</strong> on the handlebar remote for 3 seconds.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">3</div>
         <span class="emoji">📺</span>
-        <h3>Check the screen</h3>
+        <h3>
+          <span class="lang-cs">Zkontroluj displej</span>
+          <span class="lang-en">Check the screen</span>
+        </h3>
       </div>
-      <p>The screen will show <strong>"WALK MODE"</strong>.</p>
+      <p>
+        <span class="lang-cs">Na displeji se zobrazi <strong>"WALK MODE"</strong>.</span>
+        <span class="lang-en">The screen will show <strong>"WALK MODE"</strong>.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">4</div>
         <span class="emoji">🚶‍♀️</span>
-        <h3>Walk alongside the bike</h3>
+        <h3>
+          <span class="lang-cs">Jdi vedle kola</span>
+          <span class="lang-en">Walk alongside the bike</span>
+        </h3>
       </div>
-      <p>The bike will move forward slowly (max 6 km/h) — walk alongside it.</p>
-      <div class="warning">Remember: Only use Walk Mode when you are <strong>walking beside the bike</strong>, not sitting on it.</div>
+      <p>
+        <span class="lang-cs">Kolo se bude pomalu pohybovat dopredu (max 6 km/h) — jdi vedle nej.</span>
+        <span class="lang-en">The bike will move forward slowly (max 6 km/h) — walk alongside it.</span>
+      </p>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Rezim chuze pouzivej jen kdyz <strong>jdes vedle kola</strong>, ne kdyz na nem sedis.</span>
+        <span class="lang-en">Remember: Only use Walk Mode when you are <strong>walking beside the bike</strong>, not sitting on it.</span>
+      </div>
     </div>
   </div>
 
   <!-- Charging Section -->
   <div class="section" id="sec-charging">
-    <h2 class="section-title">Charging</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Nabijeni</span>
+      <span class="lang-en">Charging</span>
+    </h2>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">1</div>
         <span class="emoji">🔋</span>
-        <h3>Prepare to charge</h3>
+        <h3>
+          <span class="lang-cs">Priprava na nabijeni</span>
+          <span class="lang-en">Prepare to charge</span>
+        </h3>
       </div>
       <ol>
-        <li>Remove the battery from the bike (or charge it while still on the bike).</li>
-        <li>Open the charging port cover on the battery.</li>
+        <li class="lang-cs">Vyjmi baterii z kola (nebo ji nabijej primo na kole).</li>
+        <li class="lang-cs">Otevri krytek nabijeciho portu na baterii.</li>
+        <li class="lang-en">Remove the battery from the bike (or charge it while still on the bike).</li>
+        <li class="lang-en">Open the charging port cover on the battery.</li>
       </ol>
     </div>
 
@@ -464,36 +614,66 @@
       <div class="card-header">
         <div class="step-number">2</div>
         <span class="emoji">🔌</span>
-        <h3>Plug in the charger</h3>
+        <h3>
+          <span class="lang-cs">Pripoj nabjecku</span>
+          <span class="lang-en">Plug in the charger</span>
+        </h3>
       </div>
-      <p>Plug in <strong>only the charger that came with the bike</strong>.</p>
-      <div class="warning">Remember: Never use a different charger. Using the wrong charger can cause a fire.</div>
+      <p>
+        <span class="lang-cs">Pripoj <strong>pouze nabjecku, ktera byla soucasti baleni kola</strong>.</span>
+        <span class="lang-en">Plug in <strong>only the charger that came with the bike</strong>.</span>
+      </p>
+      <div class="warning">
+        <span class="lang-cs">Pozor: Nikdy nepouzivej jinou nabjecku. Spatna nabjecka muze zpusobit pozar.</span>
+        <span class="lang-en">Remember: Never use a different charger. Using the wrong charger can cause a fire.</span>
+      </div>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">3</div>
         <span class="emoji">🔴</span>
-        <h3>Red light = charging</h3>
+        <h3>
+          <span class="lang-cs">Cervene svetlo = nabiji se</span>
+          <span class="lang-en">Red light = charging</span>
+        </h3>
       </div>
-      <p>A <strong>red LED</strong> means it is charging. A full charge takes about <strong>7 hours</strong>.</p>
+      <p>
+        <span class="lang-cs"><strong>Cervena LED</strong> znamena, ze se baterie nabiji. Plne nabiti trva priblizne <strong>7 hodin</strong>.</span>
+        <span class="lang-en">A <strong>red LED</strong> means it is charging. A full charge takes about <strong>7 hours</strong>.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <div class="step-number">4</div>
         <span class="emoji">🟢</span>
-        <h3>Green light = done!</h3>
+        <h3>
+          <span class="lang-cs">Zelene svetlo = nabito!</span>
+          <span class="lang-en">Green light = done!</span>
+        </h3>
       </div>
-      <p>A <strong>green LED</strong> means it is fully charged — unplug it.</p>
+      <p>
+        <span class="lang-cs"><strong>Zelena LED</strong> znamena, ze je baterie plne nabita — odpoj nabjecku.</span>
+        <span class="lang-en">A <strong>green LED</strong> means it is fully charged — unplug it.</span>
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">
         <span class="emoji">📋</span>
-        <h3>Charging tips</h3>
+        <h3>
+          <span class="lang-cs">Tipy pro nabijeni</span>
+          <span class="lang-en">Charging tips</span>
+        </h3>
       </div>
-      <ul>
+      <ul class="lang-cs">
+        <li>Nabijej pouze v interieru, na suchem miste.</li>
+        <li>Nabijej pri teplote mezi 10&deg;C a 40&deg;C.</li>
+        <li>Nikdy nenabijej v blizkosti vody nebo horlaveho materialu.</li>
+        <li>Nabij baterii alespon jednou za <strong>6 mesicu</strong>, i kdyz jsi nejezdila.</li>
+      </ul>
+      <ul class="lang-en">
         <li>Charge indoors only, in a dry place.</li>
         <li>Charge at temperatures between 10&deg;C and 40&deg;C.</li>
         <li>Never charge near water or flammable materials.</li>
@@ -504,9 +684,17 @@
     <div class="card">
       <div class="card-header">
         <span class="emoji">📦</span>
-        <h3>Battery storage tips</h3>
+        <h3>
+          <span class="lang-cs">Tipy pro skladovani baterie</span>
+          <span class="lang-en">Battery storage tips</span>
+        </h3>
       </div>
-      <ul>
+      <ul class="lang-cs">
+        <li>Skladuj baterii nabitu na 30 % az 60 %.</li>
+        <li>Uchovavej ji na chladnem, suchem miste (10&deg;C–25&deg;C), mimo prime slunecni svetlo.</li>
+        <li>Pri dlouhodobem skladovani kontroluj nabiti kazdych 3 mesicu.</li>
+      </ul>
+      <ul class="lang-en">
         <li>Store the battery between 30% and 60% charge.</li>
         <li>Keep it in a cool, dry place (10&deg;C–25&deg;C), away from direct sunlight.</li>
         <li>If storing for a long time, check the charge every 3 months.</li>
@@ -516,17 +704,31 @@
 
   <!-- Troubleshooting Section -->
   <div class="section" id="sec-trouble">
-    <h2 class="section-title">Troubleshooting</h2>
+    <h2 class="section-title">
+      <span class="lang-cs">Reseni problemu</span>
+      <span class="lang-en">Troubleshooting</span>
+    </h2>
 
     <div class="accordion">
       <button class="accordion-btn" aria-expanded="false">
-        The motor isn't helping me
+        <span>
+          <span class="lang-cs">Motor mi nepomaha</span>
+          <span class="lang-en">The motor isn't helping me</span>
+        </span>
         <span class="arrow">&#9660;</span>
       </button>
       <div class="accordion-body">
         <div class="accordion-body-inner">
-          <p>Possible reasons:</p>
-          <ul>
+          <p class="lang-cs">Mozne priciny:</p>
+          <p class="lang-en">Possible reasons:</p>
+          <ul class="lang-cs">
+            <li>Jedes rychleji nez 25 km/h — motor se pri teto rychlosti automaticky vypne.</li>
+            <li>Neslapete — motor funguje jen pri slapani.</li>
+            <li>Baterie je velmi vybita — nabij ji.</li>
+            <li>Rezim asistence je na 0 — stiskni &laquo;+&raquo; pro rezim 1, 2, 3 nebo 4.</li>
+            <li>Displej je vypnuty — stiskni ON/OFF pro jeho zapnuti.</li>
+          </ul>
+          <ul class="lang-en">
             <li>You are going faster than 25 km/h — the motor stops automatically at that speed.</li>
             <li>You are not pedalling — the motor only works when you pedal.</li>
             <li>The battery is very low — charge the battery.</li>
@@ -539,12 +741,22 @@
 
     <div class="accordion">
       <button class="accordion-btn" aria-expanded="false">
-        The battery drains quickly
+        <span>
+          <span class="lang-cs">Baterie se rychle vybiji</span>
+          <span class="lang-en">The battery drains quickly</span>
+        </span>
         <span class="arrow">&#9660;</span>
       </button>
       <div class="accordion-body">
         <div class="accordion-body-inner">
-          <ul>
+          <ul class="lang-cs">
+            <li>Chladne pocasi zkracuje zivotnost baterie — v zime je to normalni.</li>
+            <li>Vysoke rezimy asistence (3 nebo 4) spotrebovavaji vice energie.</li>
+            <li>Jizda do kopce spotrebovava vice energie.</li>
+            <li>Na rovine prepni na rezim 1 nebo 2 pro usporu baterie.</li>
+            <li>Zkontroluj, ze pneumatiky jsou nahustene na 2–5 baru.</li>
+          </ul>
+          <ul class="lang-en">
             <li>Cold weather reduces battery life — this is normal in winter.</li>
             <li>Using high assistance modes (3 or 4) uses more battery.</li>
             <li>Going uphill uses more battery.</li>
@@ -557,12 +769,20 @@
 
     <div class="accordion">
       <button class="accordion-btn" aria-expanded="false">
-        I see an error on the screen
+        <span>
+          <span class="lang-cs">Na displeji je chyba</span>
+          <span class="lang-en">I see an error on the screen</span>
+        </span>
         <span class="arrow">&#9660;</span>
       </button>
       <div class="accordion-body">
         <div class="accordion-body-inner">
-          <ul>
+          <ul class="lang-cs">
+            <li><strong>Chyba 10 nebo 12:</strong> Baterie je vybita nebo prazdna — nabij ji.</li>
+            <li><strong>Chyba 44:</strong> Motor je prehrity — zastav a odpocin si, slapej jemne s nizkou asistenci.</li>
+            <li><strong>Jina chyba:</strong> Vypni a znovu zapni kolo. Pokud problem pretrva, kontaktuj dilnu Decathlonu.</li>
+          </ul>
+          <ul class="lang-en">
             <li><strong>Error 10 or 12:</strong> Battery is low or empty — charge the battery.</li>
             <li><strong>Error 44:</strong> Motor is too hot — stop and rest, pedal gently with low assistance.</li>
             <li><strong>Any other error:</strong> Turn the bike off and on again. If it persists, contact a Decathlon workshop.</li>
@@ -573,12 +793,19 @@
 
     <div class="accordion">
       <button class="accordion-btn" aria-expanded="false">
-        The brakes feel weak
+        <span>
+          <span class="lang-cs">Brzdy jsou slabe</span>
+          <span class="lang-en">The brakes feel weak</span>
+        </span>
         <span class="arrow">&#9660;</span>
       </button>
       <div class="accordion-body">
         <div class="accordion-body-inner">
-          <ul>
+          <ul class="lang-cs">
+            <li>Nove brzdove desticky se musi "zajet" — kazde brzdou jemne zabrzdete asi 10krat, zpomal z priblizne 25 km/h na 5 km/h.</li>
+            <li>Za mokra jsou brzdne drahy vzdy delsi — zpomal drive.</li>
+          </ul>
+          <ul class="lang-en">
             <li>New brake pads need "bedding in" — apply each brake gently about 10 times, slowing from ~25 km/h to 5 km/h.</li>
             <li>In wet weather, braking distances are always longer — slow down earlier.</li>
           </ul>
@@ -588,19 +815,26 @@
 
     <div class="accordion">
       <button class="accordion-btn" aria-expanded="false">
-        I need help
+        <span>
+          <span class="lang-cs">Potrebuji pomoc</span>
+          <span class="lang-en">I need help</span>
+        </span>
         <span class="arrow">&#9660;</span>
       </button>
       <div class="accordion-body">
         <div class="accordion-body-inner">
-          <p>Visit: <a href="https://www.support.decathlon.com" target="_blank" rel="noopener">Decathlon Support</a> or go to your nearest Decathlon store.</p>
+          <p class="lang-cs">Navstiv: <a href="https://www.support.decathlon.com" target="_blank" rel="noopener">Podpora Decathlon</a> nebo zajdi do nejblizsiho obchodu Decathlon.</p>
+          <p class="lang-en">Visit: <a href="https://www.support.decathlon.com" target="_blank" rel="noopener">Decathlon Support</a> or go to your nearest Decathlon store.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <div class="footer">Made with love for Grandma &middot; Based on the official Rockrider E-ACTV 500 manual</div>
+  <div class="footer">
+    <span class="lang-cs">Vyrobeno s laskou pro babicku &middot; Podle oficialniho navodu Rockrider E-ACTV 500</span>
+    <span class="lang-en">Made with love for Grandma &middot; Based on the official Rockrider E-ACTV 500 manual</span>
+  </div>
 </div>
 
 <!-- Back to Top -->
@@ -610,79 +844,105 @@
 <nav class="bottom-nav" id="bottomNav">
   <button class="nav-btn active" data-section="sec-battery">
     <span class="nav-icon">&#x1F50B;</span>
-    Battery
+    <span class="lang-cs">Baterie</span>
+    <span class="lang-en">Battery</span>
   </button>
   <button class="nav-btn" data-section="sec-lights">
     <span class="nav-icon">&#x1F4A1;</span>
-    Lights
+    <span class="lang-cs">Svetla</span>
+    <span class="lang-en">Lights</span>
   </button>
   <button class="nav-btn" data-section="sec-assistance">
     <span class="nav-icon">&#x26A1;</span>
-    Assist
+    <span class="lang-cs">Asistence</span>
+    <span class="lang-en">Assist</span>
   </button>
   <button class="nav-btn" data-section="sec-walk">
     <span class="nav-icon">&#x1F6B6;</span>
-    Walk
+    <span class="lang-cs">Chuze</span>
+    <span class="lang-en">Walk</span>
   </button>
   <button class="nav-btn" data-section="sec-charging">
     <span class="nav-icon">&#x1F50C;</span>
-    Charge
+    <span class="lang-cs">Nabijeni</span>
+    <span class="lang-en">Charge</span>
   </button>
   <button class="nav-btn" data-section="sec-trouble">
     <span class="nav-icon">&#x26A0;&#xFE0F;</span>
-    Help
+    <span class="lang-cs">Pomoc</span>
+    <span class="lang-en">Help</span>
   </button>
 </nav>
 
 <script>
 (function() {
+  // Language switching
+  var langBtn = document.getElementById('langSwitch');
+  var savedLang = localStorage.getItem('ebike-lang') || 'cs';
+  setLang(savedLang);
+
+  langBtn.addEventListener('click', function() {
+    var current = document.body.classList.contains('lang-cs') ? 'cs' : 'en';
+    setLang(current === 'cs' ? 'en' : 'cs');
+  });
+
+  function setLang(lang) {
+    document.body.classList.remove('lang-cs', 'lang-en');
+    document.body.classList.add('lang-' + lang);
+    document.documentElement.lang = lang;
+    langBtn.textContent = lang === 'cs' ? 'EN' : 'CZ';
+    document.title = lang === 'cs'
+      ? 'Navod pro babicku — Rockrider E-ACTV 500'
+      : "Grandma's E-Bike Guide — Rockrider E-ACTV 500";
+    localStorage.setItem('ebike-lang', lang);
+  }
+
   // Tab navigation
-  const navBtns = document.querySelectorAll('.nav-btn');
-  const sections = document.querySelectorAll('.section');
+  var navBtns = document.querySelectorAll('.nav-btn');
+  var sections = document.querySelectorAll('.section');
 
   function switchSection(id) {
-    sections.forEach(s => s.classList.remove('active'));
-    navBtns.forEach(b => b.classList.remove('active'));
-    const target = document.getElementById(id);
+    sections.forEach(function(s) { s.classList.remove('active'); });
+    navBtns.forEach(function(b) { b.classList.remove('active'); });
+    var target = document.getElementById(id);
     if (target) {
       target.classList.add('active');
-      // Re-trigger card animations
-      target.querySelectorAll('.card, .accordion-btn').forEach(el => {
+      target.querySelectorAll('.card, .accordion-btn').forEach(function(el) {
         el.style.animation = 'none';
-        el.offsetHeight; // trigger reflow
+        el.offsetHeight;
         el.style.animation = '';
       });
     }
-    navBtns.forEach(b => {
+    navBtns.forEach(function(b) {
       if (b.dataset.section === id) b.classList.add('active');
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  navBtns.forEach(btn => {
-    btn.addEventListener('click', () => switchSection(btn.dataset.section));
+  navBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() { switchSection(btn.dataset.section); });
   });
 
   // Accordion
-  document.querySelectorAll('.accordion-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const acc = btn.parentElement;
-      const isOpen = acc.classList.contains('open');
+  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var acc = btn.parentElement;
+      var isOpen = acc.classList.contains('open');
       acc.classList.toggle('open');
       btn.setAttribute('aria-expanded', !isOpen);
     });
   });
 
   // Back to top
-  const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
+  var backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
     if (window.scrollY > 300) {
       backBtn.classList.add('visible');
     } else {
       backBtn.classList.remove('visible');
     }
   });
-  backBtn.addEventListener('click', () => {
+  backBtn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
