@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grandma's E-Bike Guide — Rockrider E-ACTV 500</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #2a9d8f;
+    --teal-dark: #1e7a6e;
+    --teal-light: #e6f5f3;
+    --yellow-light: #fff8e1;
+    --yellow-border: #ffe082;
+    --white: #ffffff;
+    --gray-bg: #f4f6f5;
+    --gray-text: #333333;
+    --gray-sub: #666666;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --radius: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    background: var(--gray-bg);
+    padding-bottom: 90px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 32px 16px 24px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: var(--white);
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 8px;
+  }
+  .hero h1 { font-size: 26px; margin-bottom: 8px; }
+  .hero .bike-name { font-size: 18px; opacity: 0.9; margin-bottom: 12px; }
+  .hero .greeting { font-size: 20px; }
+
+  /* Sections */
+  .section { display: none; padding: 16px 0 24px; }
+  .section.active { display: block; }
+  .section-title {
+    font-size: 26px;
+    color: var(--teal-dark);
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+
+  /* Step Cards */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: cardIn 0.4s ease forwards;
+  }
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.1s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+  .card:nth-child(5) { animation-delay: 0.2s; }
+  .card:nth-child(6) { animation-delay: 0.25s; }
+
+  @keyframes cardIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .step-number {
+    width: 40px; height: 40px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .card-header .emoji { font-size: 28px; flex-shrink: 0; }
+  .card-header h3 { font-size: 20px; color: var(--gray-text); }
+
+  .card p, .card li { font-size: 18px; line-height: 1.6; color: var(--gray-sub); }
+  .card ul, .card ol { padding-left: 20px; margin-top: 8px; }
+  .card li { margin-bottom: 6px; }
+  .card strong { color: var(--gray-text); }
+
+  /* Warning callout */
+  .warning {
+    background: var(--yellow-light);
+    border-left: 4px solid var(--yellow-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* Accordion (Troubleshooting) */
+  .accordion { margin-bottom: 16px; }
+  .accordion-btn {
+    width: 100%;
+    background: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--gray-text);
+    min-height: 56px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: cardIn 0.4s ease forwards;
+  }
+  .accordion:nth-child(2) .accordion-btn { animation-delay: 0.05s; }
+  .accordion:nth-child(3) .accordion-btn { animation-delay: 0.1s; }
+  .accordion:nth-child(4) .accordion-btn { animation-delay: 0.15s; }
+  .accordion:nth-child(5) .accordion-btn { animation-delay: 0.2s; }
+  .accordion:nth-child(6) .accordion-btn { animation-delay: 0.25s; }
+
+  .accordion-btn .arrow {
+    transition: transform 0.3s;
+    font-size: 18px;
+    color: var(--teal);
+  }
+  .accordion.open .accordion-btn .arrow { transform: rotate(180deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: var(--white);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    margin-top: -8px;
+  }
+  .accordion.open .accordion-body { max-height: 600px; }
+  .accordion-body-inner {
+    padding: 16px 20px 20px;
+  }
+  .accordion-body-inner p,
+  .accordion-body-inner li { font-size: 18px; line-height: 1.6; color: var(--gray-sub); }
+  .accordion-body-inner ul { padding-left: 20px; margin-top: 8px; }
+  .accordion-body-inner li { margin-bottom: 6px; }
+  .accordion-body-inner strong { color: var(--gray-text); }
+  .accordion-body-inner a {
+    color: var(--teal);
+    text-decoration: underline;
+  }
+
+  /* Sub-heading inside cards */
+  .card .sub-heading {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  .card .sub-heading:first-of-type { margin-top: 0; }
+
+  /* Bottom Nav */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 0 env(safe-area-inset-bottom, 8px);
+    z-index: 100;
+  }
+  .nav-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 2px;
+    color: var(--gray-sub);
+    font-size: 11px;
+    font-weight: 600;
+    min-height: 48px;
+    min-width: 48px;
+    transition: color 0.2s;
+  }
+  .nav-btn .nav-icon { font-size: 22px; margin-bottom: 2px; }
+  .nav-btn.active { color: var(--teal); }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 90px; right: 16px;
+    width: 48px; height: 48px;
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: opacity 0.3s;
+  }
+  .back-to-top.visible { display: flex; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 16px 16px;
+    font-size: 14px;
+    color: var(--gray-sub);
+  }
+
+  /* Modes list */
+  .modes-list { list-style: none; padding-left: 0 !important; }
+  .modes-list li { padding: 6px 0; border-bottom: 1px solid #eee; }
+  .modes-list li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Grandma's E-Bike Guide</h1>
+  <div class="bike-name">Rockrider E-ACTV 500</div>
+  <div class="greeting">Hello! Tap a topic below to get started.</div>
+</div>
+
+<!-- Main Content -->
+<div class="container" id="content">
+
+  <!-- Battery Section -->
+  <div class="section active" id="sec-battery">
+    <h2 class="section-title">Battery</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">🔛</span>
+        <h3>Turn the bike ON</h3>
+      </div>
+      <ol>
+        <li>Make sure the battery is inserted (it clicks in).</li>
+        <li>Press and hold the <strong>ON/OFF button</strong> on the screen until it lights up.</li>
+        <li>The screen will show your speed, battery level, and assistance mode — you're ready!</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">📴</span>
+        <h3>Turn the bike OFF</h3>
+      </div>
+      <ol>
+        <li>Press and hold the <strong>ON/OFF button</strong> until the screen goes dark.</li>
+      </ol>
+      <div class="warning">Remember: Always remove the key from the battery lock before riding.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">3</div>
+        <span class="emoji">🔋</span>
+        <h3>Insert the battery</h3>
+      </div>
+      <ol>
+        <li>Check nothing is already in the battery slot.</li>
+        <li>Slide the battery into its housing until it clicks.</li>
+        <li>Always remove the key from the lock before you ride.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">4</div>
+        <span class="emoji">🔓</span>
+        <h3>Remove the battery</h3>
+      </div>
+      <ol>
+        <li>Turn the key — the battery will move slightly so you can grip it.</li>
+        <li>Pull the pull tab if it does not move on its own.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Lights Section -->
+  <div class="section" id="sec-lights">
+    <h2 class="section-title">Lights</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">🔦</span>
+        <h3>Find the button</h3>
+      </div>
+      <p>Find the <strong>Display &laquo;&minus;&raquo; button</strong> (the down arrow on the screen unit).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">👆</span>
+        <h3>Press and hold 3 seconds</h3>
+      </div>
+      <p>Press and <strong>hold it for 3 seconds</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">3</div>
+        <span class="emoji">💡</span>
+        <h3>Check the screen</h3>
+      </div>
+      <p>The screen will show <strong>"LIGHTS ON"</strong> or <strong>"LIGHTS OFF"</strong>.</p>
+      <div class="warning">Remember: In rain, fog, or at night always turn the lights on and slow down.</div>
+    </div>
+  </div>
+
+  <!-- Assistance Section -->
+  <div class="section" id="sec-assistance">
+    <h2 class="section-title">Assistance</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="emoji">⚡</span>
+        <h3>What is assistance?</h3>
+      </div>
+      <p>The bike has a motor that helps you pedal. You can choose how much help you want:</p>
+      <ul class="modes-list">
+        <li><strong>Mode 0</strong> — No motor help (just your own legs)</li>
+        <li><strong>Mode 1</strong> — A little help (+70%) — good for flat roads (starts here)</li>
+        <li><strong>Mode 2</strong> — More help (+150%) — good for gentle hills</li>
+        <li><strong>Mode 3</strong> — A lot of help (+220%) — good for steeper hills</li>
+        <li><strong>Mode 4</strong> — Maximum help (+280%) — use when tired or on big hills</li>
+      </ul>
+      <p style="margin-top:12px"><strong>Tip:</strong> The motor only helps when you are pedalling. It stops automatically above 25 km/h.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">🔼</span>
+        <h3>Increase assistance</h3>
+      </div>
+      <ol>
+        <li>Press the <strong>&laquo;+&raquo; button</strong> on the handlebar remote (the up arrow).</li>
+        <li>Each press moves up one mode (1 &rarr; 2 &rarr; 3 &rarr; 4).</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">🔽</span>
+        <h3>Decrease assistance</h3>
+      </div>
+      <ol>
+        <li>Press the <strong>&laquo;&minus;&raquo; button</strong> on the handlebar remote (the down arrow).</li>
+        <li>Each press moves down one mode (4 &rarr; 3 &rarr; 2 &rarr; 1 &rarr; 0).</li>
+      </ol>
+      <div class="warning">Remember: When the battery is getting low, switch to a <strong>lower mode</strong> (1 or 2) to save energy.</div>
+    </div>
+  </div>
+
+  <!-- Walk Mode Section -->
+  <div class="section" id="sec-walk">
+    <h2 class="section-title">Walk Mode</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="emoji">🚶</span>
+        <h3>What is Walk Mode?</h3>
+      </div>
+      <p>Walk Mode makes the motor gently push the bike forward while you walk beside it — perfect for pushing it up a ramp or steep path without tiring yourself.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">🔛</span>
+        <h3>Make sure the bike is ON</h3>
+      </div>
+      <p>The screen should be lit up and showing information.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">👆</span>
+        <h3>Hold the + button</h3>
+      </div>
+      <p>Press and <strong>hold the &laquo;+&raquo; button</strong> on the handlebar remote for 3 seconds.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">3</div>
+        <span class="emoji">📺</span>
+        <h3>Check the screen</h3>
+      </div>
+      <p>The screen will show <strong>"WALK MODE"</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">4</div>
+        <span class="emoji">🚶‍♀️</span>
+        <h3>Walk alongside the bike</h3>
+      </div>
+      <p>The bike will move forward slowly (max 6 km/h) — walk alongside it.</p>
+      <div class="warning">Remember: Only use Walk Mode when you are <strong>walking beside the bike</strong>, not sitting on it.</div>
+    </div>
+  </div>
+
+  <!-- Charging Section -->
+  <div class="section" id="sec-charging">
+    <h2 class="section-title">Charging</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">1</div>
+        <span class="emoji">🔋</span>
+        <h3>Prepare to charge</h3>
+      </div>
+      <ol>
+        <li>Remove the battery from the bike (or charge it while still on the bike).</li>
+        <li>Open the charging port cover on the battery.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">2</div>
+        <span class="emoji">🔌</span>
+        <h3>Plug in the charger</h3>
+      </div>
+      <p>Plug in <strong>only the charger that came with the bike</strong>.</p>
+      <div class="warning">Remember: Never use a different charger. Using the wrong charger can cause a fire.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">3</div>
+        <span class="emoji">🔴</span>
+        <h3>Red light = charging</h3>
+      </div>
+      <p>A <strong>red LED</strong> means it is charging. A full charge takes about <strong>7 hours</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="step-number">4</div>
+        <span class="emoji">🟢</span>
+        <h3>Green light = done!</h3>
+      </div>
+      <p>A <strong>green LED</strong> means it is fully charged — unplug it.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="emoji">📋</span>
+        <h3>Charging tips</h3>
+      </div>
+      <ul>
+        <li>Charge indoors only, in a dry place.</li>
+        <li>Charge at temperatures between 10&deg;C and 40&deg;C.</li>
+        <li>Never charge near water or flammable materials.</li>
+        <li>Charge the battery at least once every <strong>6 months</strong> even if you haven't ridden.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="emoji">📦</span>
+        <h3>Battery storage tips</h3>
+      </div>
+      <ul>
+        <li>Store the battery between 30% and 60% charge.</li>
+        <li>Keep it in a cool, dry place (10&deg;C–25&deg;C), away from direct sunlight.</li>
+        <li>If storing for a long time, check the charge every 3 months.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Troubleshooting Section -->
+  <div class="section" id="sec-trouble">
+    <h2 class="section-title">Troubleshooting</h2>
+
+    <div class="accordion">
+      <button class="accordion-btn" aria-expanded="false">
+        The motor isn't helping me
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <p>Possible reasons:</p>
+          <ul>
+            <li>You are going faster than 25 km/h — the motor stops automatically at that speed.</li>
+            <li>You are not pedalling — the motor only works when you pedal.</li>
+            <li>The battery is very low — charge the battery.</li>
+            <li>Assistance mode is set to 0 — press &laquo;+&raquo; to choose mode 1, 2, 3 or 4.</li>
+            <li>The screen is off — press ON/OFF to turn it back on.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn" aria-expanded="false">
+        The battery drains quickly
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <ul>
+            <li>Cold weather reduces battery life — this is normal in winter.</li>
+            <li>Using high assistance modes (3 or 4) uses more battery.</li>
+            <li>Going uphill uses more battery.</li>
+            <li>Switch to mode 1 or 2 on flat ground to save battery.</li>
+            <li>Make sure tyres are inflated to 2–5 bar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn" aria-expanded="false">
+        I see an error on the screen
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <ul>
+            <li><strong>Error 10 or 12:</strong> Battery is low or empty — charge the battery.</li>
+            <li><strong>Error 44:</strong> Motor is too hot — stop and rest, pedal gently with low assistance.</li>
+            <li><strong>Any other error:</strong> Turn the bike off and on again. If it persists, contact a Decathlon workshop.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn" aria-expanded="false">
+        The brakes feel weak
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <ul>
+            <li>New brake pads need "bedding in" — apply each brake gently about 10 times, slowing from ~25 km/h to 5 km/h.</li>
+            <li>In wet weather, braking distances are always longer — slow down earlier.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn" aria-expanded="false">
+        I need help
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <p>Visit: <a href="https://www.support.decathlon.com" target="_blank" rel="noopener">Decathlon Support</a> or go to your nearest Decathlon store.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">Made with love for Grandma &middot; Based on the official Rockrider E-ACTV 500 manual</div>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav" id="bottomNav">
+  <button class="nav-btn active" data-section="sec-battery">
+    <span class="nav-icon">&#x1F50B;</span>
+    Battery
+  </button>
+  <button class="nav-btn" data-section="sec-lights">
+    <span class="nav-icon">&#x1F4A1;</span>
+    Lights
+  </button>
+  <button class="nav-btn" data-section="sec-assistance">
+    <span class="nav-icon">&#x26A1;</span>
+    Assist
+  </button>
+  <button class="nav-btn" data-section="sec-walk">
+    <span class="nav-icon">&#x1F6B6;</span>
+    Walk
+  </button>
+  <button class="nav-btn" data-section="sec-charging">
+    <span class="nav-icon">&#x1F50C;</span>
+    Charge
+  </button>
+  <button class="nav-btn" data-section="sec-trouble">
+    <span class="nav-icon">&#x26A0;&#xFE0F;</span>
+    Help
+  </button>
+</nav>
+
+<script>
+(function() {
+  // Tab navigation
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.section');
+
+  function switchSection(id) {
+    sections.forEach(s => s.classList.remove('active'));
+    navBtns.forEach(b => b.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      // Re-trigger card animations
+      target.querySelectorAll('.card, .accordion-btn').forEach(el => {
+        el.style.animation = 'none';
+        el.offsetHeight; // trigger reflow
+        el.style.animation = '';
+      });
+    }
+    navBtns.forEach(b => {
+      if (b.dataset.section === id) b.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => switchSection(btn.dataset.section));
+  });
+
+  // Accordion
+  document.querySelectorAll('.accordion-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const acc = btn.parentElement;
+      const isOpen = acc.classList.contains('open');
+      acc.classList.toggle('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backBtn.classList.add('visible');
+    } else {
+      backBtn.classList.remove('visible');
+    }
+  });
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
